@@ -3,6 +3,7 @@ import CreateArea from "./components/CreateArea";
 import Header from "./components/Header";
 import Notes from "./components/Notes";
 import Modal from "./components/Modal";
+import Footer from './components/Footer';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
         show={show}
         setShow={setShow}
       ></Modal>
+      <Footer></Footer>
     </div>
   );
 }
