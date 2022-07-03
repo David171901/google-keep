@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import CreateArea from "./components/CreateArea";
+import Header from "./components/Header";
+import Notes from "./components/Notes";
+import Modal from "./components/Modal";
 
 function App() {
+
+  const [show, setShow] = useState(false);
+
+  const [notes, setNotes] = useState([]);
+
+  const addNote = (newNote) => {
+    setNotes((prevValue) => {
+      return [...prevValue, newNote];
+    });
+  }
+
+  const deleteNotes = (id) => {
+    setNotes((preValue) => {
+      return [...preValue.filter((note,index) => index !== id)];
+    });
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header></Header>
+      <CreateArea addNote={addNote}/>
+      <div className="mt-10 container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4">
+        {
+          notes.map((noteItem, index) => {
+            return <Notes key={index} title={noteItem.title} content={noteItem.content} color={noteItem.color} deleteNotes={deleteNotes} id={index} setShow={setShow}/>
+          })
+        }
+      </div>
+      <Modal
+        show={show}
+        setShow={setShow}
+      ></Modal>
     </div>
   );
 }
