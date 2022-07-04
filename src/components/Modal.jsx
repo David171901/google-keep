@@ -5,6 +5,7 @@ import GlobalContext from "../context/GlobalContext";
 import {AiOutlineBell} from 'react-icons/ai'
 import {FiUserPlus} from 'react-icons/fi'
 import {BiColorFill, BiImage, BiDotsVerticalRounded} from 'react-icons/bi'
+import {BsFileArrowDown} from 'react-icons/bs'
 
 const Modal = () => {
   
@@ -36,7 +37,7 @@ const Modal = () => {
         <div className={`relative max-w-lg w-full h-auto rounded-lg opacity-100 ${notes[selectNote].color} scrollbar scrollbar-thumb-gray-300 scrollbar-track-gray-100`}>
           <form onSubmit={()=>onSubmitUpdate()}>
             <input
-                className={`px-8 py-4 w-full focus:outline-none ${notes[selectNote].color}`}
+                className={`px-8 py-4 w-full focus:outline-none text-lg font-semibold border-b ${notes[selectNote].color}`}
                 value={noteEdit.title}
                 type="text"
                 placeholder="Title"
@@ -44,29 +45,26 @@ const Modal = () => {
                 onChange={handleChange}
                 required
             />
-            <p className='px-8 py-4 w-full h-[30rem]'>
-              <textarea
-                  className={`w-full h-64 focus:outline-none scrollbar scrollbar-thumb-gray-300 scrollbar-track-gray-100 text-justify ${notes[selectNote].color}`}
-                  value={noteEdit.content}
-                  name="content"
-                  placeholder="Take a note..."
-                  onChange={handleChange}
-                  required
-              ></textarea>
-            </p>
-            <div className='mt-10 h-12 w-full border-t shadow flex justify-between items-center space-x-4 '>
-              <div className='flex'>
-                <AiOutlineBell className='text-2xl'></AiOutlineBell>
-                <FiUserPlus className='text-2xl'></FiUserPlus>
-                <BiColorFill className='text-2xl'></BiColorFill>
-                <BiImage className='text-2xl'></BiImage>
-                <BiDotsVerticalRounded className='text-2xl'></BiDotsVerticalRounded>
-              </div>
-              <button>Save</button>
+            <textarea
+                className={`px-8 py-4 w-full h-[31rem] focus:outline-none scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin text-justify ${notes[selectNote].color}`}
+                value={noteEdit.content}
+                name="content"
+                placeholder="Take a note..."
+                onChange={handleChange}
+                required
+            />
+            <div className='h-12 w-full border-t shadow flex justify-evenly items-center space-x-4 '>
+                <AiOutlineBell className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></AiOutlineBell>
+                <FiUserPlus className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></FiUserPlus>
+                <BiColorFill className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></BiColorFill>
+                <BiImage className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></BiImage>
+                <BsFileArrowDown className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></BsFileArrowDown>
+                <BiDotsVerticalRounded className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></BiDotsVerticalRounded>
+                <button className='px-4 py-1 text-lg font-semibold rounded-lg transition duration-200 ease-linear hover:bg-gray-200 hover:bg-opacity-50'>Save</button>
             </div>
           </form>
 
-          <div className='absolute top-0 right-0' onClick={()=>{
+          <div className='absolute top-2 right-2 text-xl' onClick={()=>{
             setShowEventModal(false);
           }}>
             <AiOutlineClose></AiOutlineClose>

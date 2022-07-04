@@ -9,7 +9,6 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 const Header = () => {
 
     const GoogleKeepLogo = <img src='https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png' alt='logo' className='w-10'/>
-    const IconProfile = <img src='https://lh3.googleusercontent.com/ogw/ADea4I5T7iCJa9TXQVvUTSgED3EtVklQoKKHsiKM1rFA=s32-c-mo' alt='icon' className='rounded-full'/>
 
     return (
         <div className='w-full border-b-0 shadow-lg py-2'>
@@ -46,8 +45,8 @@ const Header = () => {
                     <button className='p-3 hover:bg-gray-100 rounded-full transition duration-200 ease-linear mr-2'>
                         <TbGridDots className='text-2xl'/>
                     </button>
-                    <button className='rounded-full mr-8'>
-                        {IconProfile}
+                    <button className='rounded-full mr-8 bg-green-900 p-2 px-3'>
+                        <p className='text-xl text-white font-bold'>D</p>
                     </button>
                 </div>
             </div>
