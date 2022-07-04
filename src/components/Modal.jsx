@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import {AiOutlineClose} from 'react-icons/ai'
 import GlobalContext from "../context/GlobalContext";
 
@@ -9,9 +9,7 @@ import {BsFileArrowDown} from 'react-icons/bs'
 
 const Modal = () => {
   
-  const { notes,setNotes,selectNote,setShowEventModal } = useContext(GlobalContext);
-
-  const [noteEdit, setNoteEdit] = useState(notes[selectNote]);
+  const { notes,setNotes,selectNote,setShowEventModal, noteEdit, setNoteEdit } = useContext(GlobalContext);
 
   const handleChange = (e) =>{
     const { name, value } = e.target;

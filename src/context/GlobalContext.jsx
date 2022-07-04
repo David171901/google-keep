@@ -9,6 +9,8 @@ const GlobalContext = React.createContext({
     setSelectNote: () => {},
     showEventModal: false,
     setShowEventModal: () => {},
+    noteEdit: null,
+    setNoteEdit: () => {},
 });
 
 export default GlobalContext;

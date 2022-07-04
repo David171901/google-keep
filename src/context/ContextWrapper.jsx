@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GlobalContext from "./GlobalContext";
 
 export default function ContextWrapper(props) {
@@ -15,6 +15,14 @@ export default function ContextWrapper(props) {
 
     const [showEventModal, setShowEventModal] = useState(false);
     
+    const [noteEdit, setNoteEdit] = useState({});
+
+    useEffect(() => {
+      if(selectNote !== null){
+        setNoteEdit(notes[selectNote]);
+      }
+    }, [selectNote, notes]);
+
     return (
       <GlobalContext.Provider
         value={{
@@ -26,6 +34,8 @@ export default function ContextWrapper(props) {
             setSelectNote,
             showEventModal,
             setShowEventModal,
+            noteEdit,
+            setNoteEdit,
         }}
       >
         {props.children}
