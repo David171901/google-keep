@@ -1,13 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { IoIosAdd } from "react-icons/io";
+import GlobalContext from "../context/GlobalContext";
 
 const CreateArea = ({addNote}) => {
 
-    const [note, setNote] = useState({
-        title: "",
-        content: "",
-        color: "",
-    });
+    const { note, setNote } = useContext(GlobalContext);
 
     const handleChange = (e) =>{
         const { name, value } = e.target;

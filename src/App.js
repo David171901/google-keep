@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import CreateArea from "./components/CreateArea";
 import Header from "./components/Header";
 import Notes from "./components/Notes";
-import Modal from "./components/Modal";
 import Footer from './components/Footer';
+import GlobalContext from "./context/GlobalContext";
 
 function App() {
 
-  const [show, setShow] = useState(false);
-
-  const [notes, setNotes] = useState([]);
+  const { notes, setNotes } = useContext(GlobalContext);
 
   const addNote = (newNote) => {
     setNotes((prevValue) => {
@@ -31,14 +29,10 @@ function App() {
       <div className="mt-10 container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4">
         {
           notes.map((noteItem, index) => {
-            return <Notes key={index} title={noteItem.title} content={noteItem.content} color={noteItem.color} deleteNotes={deleteNotes} id={index} setShow={setShow}/>
+            return <Notes key={index} title={noteItem.title} content={noteItem.content} color={noteItem.color} deleteNotes={deleteNotes} id={index} />
           })
         }
       </div>
-      <Modal
-        show={show}
-        setShow={setShow}
-      ></Modal>
       <Footer></Footer>
     </div>
   );
