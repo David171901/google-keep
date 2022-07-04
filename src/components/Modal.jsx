@@ -32,8 +32,8 @@ const Modal = () => {
 
   return (
     <>
-      <div className='flex justify-center items-center w-screen h-screen fixed top-0 left-0 bg-gray-300 bg-opacity-50'>
-        <div className={`relative max-w-xl w-full h-auto rounded-lg opacity-100 ${notes[selectNote].color} scrollbar scrollbar-thumb-gray-300 scrollbar-track-gray-100`}>
+      <div className='flex justify-center items-center w-screen h-screen fixed top-0 left-0 bg-gray-300 bg-opacity-20'>
+        <div className={`relative max-w-lg w-full h-auto rounded-lg opacity-100 ${notes[selectNote].color} scrollbar scrollbar-thumb-gray-300 scrollbar-track-gray-100`}>
           <form onSubmit={()=>onSubmitUpdate()}>
             <input
                 className={`px-8 py-4 w-full focus:outline-none ${notes[selectNote].color}`}
@@ -44,7 +44,7 @@ const Modal = () => {
                 onChange={handleChange}
                 required
             />
-            <p className='px-8 py-4 w-full  h-64'>
+            <p className='px-8 py-4 w-full h-[30rem]'>
               <textarea
                   className={`w-full h-64 focus:outline-none scrollbar scrollbar-thumb-gray-300 scrollbar-track-gray-100 text-justify ${notes[selectNote].color}`}
                   value={noteEdit.content}

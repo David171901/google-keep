@@ -1,7 +1,12 @@
 import React, { useContext } from 'react'
-import {AiOutlineDelete} from 'react-icons/ai'
 import Modal from './Modal'
 import GlobalContext from "../context/GlobalContext";
+
+// REACT ICONS
+import {BsPin} from 'react-icons/bs'
+import {FiUserPlus} from 'react-icons/fi'
+import {BiColorFill, BiImage, BiDotsVerticalRounded} from 'react-icons/bi'
+import {BsTrash} from 'react-icons/bs'
 
 const Notes = ({title,content,deleteNotes,id,color}) => {
 
@@ -9,22 +14,37 @@ const Notes = ({title,content,deleteNotes,id,color}) => {
 
   return (
     <>
-
-      <div className={`cursor-pointer relative h-96 overflow-hidden border rounded-lg p-4 ${color}`} onClick={()=> {
-        setSelectNote(id);
-        setShowEventModal(true);
-      }}>
-          <h2 className='text-lg font-normal text-justify'>{title}</h2>
-          <p className='font-light overflow-hidden text-justify z-50'>{content}</p>
-          <button className='absolute right-2 bottom-2 rounded-full p-2 hover:bg-gray-400  hover:bg-opacity-50' onClick={()=>deleteNotes(id)}>
-              <AiOutlineDelete className='text-2xl'/>
+      <div className={`relative h-96 overflow-hidden border rounded-lg ${color}`}>
+        {/* HEADER NOTE */}
+        <div className='h-12 w-full flex justify-end '>
+          <button 
+            className='hover:bg-gray-100 hover:bg-opacity-80 rounded-full transition duration-200 ease-linear mr-2 mt-2 cursor-pointer '
+            onClick={()=> {
+              setSelectNote(id);
+              setShowEventModal(true);
+            }}
+          >
+            <BsPin className='text-xl w-10'></BsPin>
           </button>
+        </div>
+        {/* CONTENT NOTE */}
+        <div>
+          <h2 className='text-lg font-normal text-justify overflow-hidden px-4 truncate '>{title}</h2>
+          <p className='h-64 font-light overflow-hidden text-justify z-50 px-4'>{content}</p>
+        </div>
+        {/* FOOTER NOTE */}
+        <div>
+          <div className='h-12 px-4 flex justify-between items-center space-x-3'>
+            <BsTrash className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700' onClick={()=>deleteNotes(id)}></BsTrash>
+            <FiUserPlus className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></FiUserPlus>
+            <BiColorFill className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></BiColorFill>
+            <BiImage className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></BiImage>
+            <BiDotsVerticalRounded className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></BiDotsVerticalRounded>
+          </div>
+        </div>
       </div>
-
       {showEventModal && <Modal></Modal>}
     </>
-
-
   )
 }
 

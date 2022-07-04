@@ -8,8 +8,8 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 
 const Header = () => {
 
-    const GoogleKeepLogo = <img src='https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png' alt='logo' className='w-10'></img>
-    const IconProfile = <img src='https://lh3.googleusercontent.com/ogw/ADea4I5T7iCJa9TXQVvUTSgED3EtVklQoKKHsiKM1rFA=s32-c-mo' alt='icon' className='rounded-full'></img>
+    const GoogleKeepLogo = <img src='https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png' alt='logo' className='w-10'/>
+    const IconProfile = <img src='https://lh3.googleusercontent.com/ogw/ADea4I5T7iCJa9TXQVvUTSgED3EtVklQoKKHsiKM1rFA=s32-c-mo' alt='icon' className='rounded-full'/>
 
     return (
         <div className='w-full border-b-0 shadow-lg py-2'>
@@ -25,11 +25,11 @@ const Header = () => {
                 {/* NAVBAR CENTER */}
                 <div className="max-w-lg w-full lg:max-w-xl">
                     <label className="sr-only">Search </label>
-                    <form className="relative" onSubmit={(e)=>{e.preventDefault()}}>
-                    <button type="submit" id="searchsubmit" className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <AiOutlineSearch className='text-xl'></AiOutlineSearch>
-                    </button>
-                    <input type="text" className="block w-full pl-10 pr-3 py-3 border border-transparent rounded-md leading-5 bg-gray-200 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-gray-100 focus:text-gray-900 transition duration-150 ease-in-out text-lg" placeholder="Search what you want"/>
+                    <form className="relative">
+                        <button type="submit" className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <AiOutlineSearch className='text-xl'></AiOutlineSearch>
+                        </button>
+                        <input type="text" className="block w-full pl-10 pr-3 py-3 border border-transparent rounded-md leading-5 bg-gray-200 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-gray-100 focus:text-gray-900 transition duration-150 ease-in-out text-lg" placeholder="Search what you want"/>
                     </form>
                 </div>
                 {/* NAVBAR RIGHT */}
