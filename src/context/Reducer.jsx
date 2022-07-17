@@ -16,6 +16,11 @@ const UserReducer = (state, action) => {
         ...state,
         notes: state.notes.filter((note,index) => index !== action.payload)
       };  
+    case types.EDIT_NOTE:
+      return {
+        ...state,
+        notes: state.notes.map((note,index)=>action.payload.selectNote === index ? action.payload.noteEdit : note)
+      };  
     default:
       return state;
   }

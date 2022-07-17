@@ -7,8 +7,6 @@ export default function ContextWrapper(props) {
     // USE REDUCER
     const [state, dispatch] = useReducer(UserReducer, initialNotesState)
 
-    const [notes, setNotes] = useState([]);
-
     const [note, setNote] = useState({
         title: "",
         content: "",
@@ -23,15 +21,14 @@ export default function ContextWrapper(props) {
 
     useEffect(() => {
       if(selectNote !== null){
-        setNoteEdit(notes[selectNote]);
+        setNoteEdit(state.notes[selectNote]);
       }
-    }, [selectNote, notes]);
+    }, [selectNote, state.notes]);
 
     return (
       <GlobalContext.Provider
         value={{
             notes: state.notes,
-            setNotes,
             note,
             setNote,
             selectNote,

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import {AiOutlineClose} from 'react-icons/ai'
 import GlobalContext from "../context/GlobalContext";
+import {types} from '../context/types'
 
 import {AiOutlineBell} from 'react-icons/ai'
 import {FiUserPlus} from 'react-icons/fi'
@@ -9,7 +10,7 @@ import {BsFileArrowDown} from 'react-icons/bs'
 
 const Modal = () => {
   
-  const { notes,setNotes,selectNote,setShowEventModal, noteEdit, setNoteEdit } = useContext(GlobalContext);
+  const { notes, dispatch,selectNote,setShowEventModal, noteEdit, setNoteEdit } = useContext(GlobalContext);
 
   const handleChange = (e) =>{
     const { name, value } = e.target;
@@ -21,22 +22,26 @@ const Modal = () => {
     });
   }
 
-  const onSubmitUpdate = (event) => {
-    let newNotes = [...notes];
-    newNotes[selectNote] = noteEdit;
-    setNotes(newNotes);
+  const onSubmitUpdate = (e) => {
+    dispatch({
+      type:types.EDIT_NOTE,
+      payload: {
+        noteEdit,
+        selectNote,
+      },
+    })
     setShowEventModal(false);
-    event.preventDefault();
+    e.preventDefault();
   }
 
   return (
     <>
       <div className='flex justify-center items-center w-screen h-screen fixed top-0 left-0 bg-gray-300 bg-opacity-20'>
         <div className={`relative max-w-lg w-full h-auto rounded-lg opacity-100 ${notes[selectNote].color} scrollbar scrollbar-thumb-gray-300 scrollbar-track-gray-100`}>
-          <form onSubmit={()=>onSubmitUpdate()}>
+          <form onSubmit={onSubmitUpdate}>
             <input
                 className={`px-8 py-4 w-full focus:outline-none text-lg font-semibold border-b ${notes[selectNote].color}`}
-                value={noteEdit?.title}
+                value={noteEdit.title}
                 type="text"
                 placeholder="Title"
                 name="title"
@@ -45,7 +50,7 @@ const Modal = () => {
             />
             <textarea
                 className={`px-8 py-4 w-full h-[31rem] focus:outline-none scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin text-justify ${notes[selectNote].color}`}
-                value={noteEdit?.content}
+                value={noteEdit.content}
                 name="content"
                 placeholder="Take a note..."
                 onChange={handleChange}
