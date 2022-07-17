@@ -3,23 +3,25 @@ import CreateArea from "./components/CreateArea";
 import Header from "./components/Header";
 import Notes from "./components/Notes";
 import GlobalContext from "./context/GlobalContext";
+import { types } from "./context/types";
 
 function App() {
 
-  const { notes, setNotes } = useContext(GlobalContext);
+  const { notes, dispatch } = useContext(GlobalContext);
 
   const addNote = (newNote) => {
-    setNotes((prevValue) => {
-      return [...prevValue, newNote];
-    });
+    dispatch({
+      type:types.ADD_NOTE,
+      payload: newNote,
+    })
   }
 
   const deleteNotes = (id) => {
-    setNotes((preValue) => {
-      return [...preValue.filter((note,index) => index !== id)];
-    });
+    dispatch({
+      type:types.DELETE_NOTE,
+      payload: id,
+    })
   }
-
 
   return (
     <div>

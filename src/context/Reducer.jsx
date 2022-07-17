@@ -1,17 +1,24 @@
 import { types } from "./types";
 
+const initialNotesState = {
+  notes: [],
+}
+
 const UserReducer = (state, action) => {
-  const { payload} = action;
   switch (action.type) {
-    case types.HANDLE_CHANGE_CREATEAREA:
+    case types.ADD_NOTE:
       return {
+        ...state,
+        notes: [...state.notes,action.payload]
       };
-    case types.ON_SUMBIT_CREATEAREA:
+    case types.DELETE_NOTE:
       return {
-      };
+        ...state,
+        notes: state.notes.filter((note,index) => index !== action.payload)
+      };  
     default:
       return state;
   }
 };
 
-export { UserReducer };
+export { UserReducer,initialNotesState };

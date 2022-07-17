@@ -36,7 +36,7 @@ const Modal = () => {
           <form onSubmit={()=>onSubmitUpdate()}>
             <input
                 className={`px-8 py-4 w-full focus:outline-none text-lg font-semibold border-b ${notes[selectNote].color}`}
-                value={noteEdit.title}
+                value={noteEdit?.title}
                 type="text"
                 placeholder="Title"
                 name="title"
@@ -45,7 +45,7 @@ const Modal = () => {
             />
             <textarea
                 className={`px-8 py-4 w-full h-[31rem] focus:outline-none scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin text-justify ${notes[selectNote].color}`}
-                value={noteEdit.content}
+                value={noteEdit?.content}
                 name="content"
                 placeholder="Take a note..."
                 onChange={handleChange}

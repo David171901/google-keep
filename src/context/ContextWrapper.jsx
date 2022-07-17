@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import GlobalContext from "./GlobalContext";
+import { UserReducer,initialNotesState } from "./Reducer";
 
 export default function ContextWrapper(props) {
+
+    // USE REDUCER
+    const [state, dispatch] = useReducer(UserReducer, initialNotesState)
 
     const [notes, setNotes] = useState([]);
 
@@ -26,7 +30,7 @@ export default function ContextWrapper(props) {
     return (
       <GlobalContext.Provider
         value={{
-            notes,
+            notes: state.notes,
             setNotes,
             note,
             setNote,
@@ -36,6 +40,7 @@ export default function ContextWrapper(props) {
             setShowEventModal,
             noteEdit,
             setNoteEdit,
+            dispatch,
         }}
       >
         {props.children}

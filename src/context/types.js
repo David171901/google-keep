@@ -1,7 +1,8 @@
 const types = {
     // The type of the context
-    HANDLE_CHANGE_CREATEAREA: 'HANDLE_CHANGE_CREATEAREA',
-    ON_SUMBIT_CREATEAREA: 'ON_SUMBIT_CREATEAREA',
+    ADD_NOTE : 'ADD_NOTE',
+    DELETE_NOTE : 'DELETE_NOTE',
+    EDIT_NOTE : 'EDIT_NOTE',
 }
 
 export {types}

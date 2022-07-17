@@ -7,7 +7,7 @@ import { IoIosAdd } from "react-icons/io";
 
 const CreateArea = ({addNote}) => {
     
-    const { note, setNote } = useContext(GlobalContext);
+    const { note, setNote} = useContext(GlobalContext);
 
     const handleChange = (e) =>{
         const { name, value } = e.target;
@@ -30,7 +30,6 @@ const CreateArea = ({addNote}) => {
             content: "",
         })
     }
-
   return (
     <div className='flex flex-col items-center mt-10'>
       <form 
