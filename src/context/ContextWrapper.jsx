@@ -4,8 +4,18 @@ import { UserReducer,initialNotesState } from "./Reducer";
 import { types } from "./types";
 
 function initEvents() {
-  const storageEvents = localStorage.getItem("savedEvents");
-  const parsedEvents = storageEvents ? JSON.parse(storageEvents) : {};
+  const storageEvents = localStorage.getItem("saved");
+  const parsedEvents = storageEvents ? JSON.parse(storageEvents) : {
+    notes: [],
+    current_note: null,
+    status_modal: false,
+    note: {
+      title: "",
+      content: "",
+    },
+    note_edit: {},
+    search: "",
+  };
   return parsedEvents;
 }
 
@@ -15,7 +25,7 @@ export default function ContextWrapper(props) {
     const [state, dispatch] = useReducer(UserReducer, initialNotesState, initEvents)
 
     useEffect(() => {
-      localStorage.setItem("savedEvents", JSON.stringify(state));
+      localStorage.setItem("saved", JSON.stringify(state));
     }, [state]);
 
     useEffect(() => {

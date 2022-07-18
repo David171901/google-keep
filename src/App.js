@@ -35,7 +35,7 @@ function App() {
       <CreateArea addNote={addNote}/>
       <div className="mt-10 container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-4">
         {
-          notes.filter(note => note.title.toLowerCase().includes(search.toLowerCase())).map((noteItem, index) => {
+          notes.filter(note => note?.title.toLowerCase().includes(search.toLowerCase())).map((noteItem, index) => {
             return <Notes key={index} title={noteItem.title} content={noteItem.content} color={noteItem.color} deleteNote={deleteNote} id={index} />
           })
         }
