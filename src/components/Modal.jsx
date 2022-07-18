@@ -10,16 +10,17 @@ import {BsFileArrowDown} from 'react-icons/bs'
 
 const Modal = () => {
   
-  const { notes, dispatch,selectNote, noteEdit, setNoteEdit } = useContext(GlobalContext);
+  const { notes, selectNote, noteEdit, dispatch } = useContext(GlobalContext);
 
   const handleChange = (e) =>{
     const { name, value } = e.target;
-    setNoteEdit((preValue) => {
-        return {
-            ...preValue,
-            [name]: value,
-        };
-    });
+    dispatch({
+      type:types.ON_CHANGE_EDIT,
+      payload: {
+        ...noteEdit,
+        [name]: value,
+      },
+    })
   }
 
   const editNote = (e) => {

@@ -1,22 +1,24 @@
 import React, { useContext } from 'react'
 import GlobalContext from "../context/GlobalContext";
 import { randomColorTailwind } from "../utils";
+import { types } from "../context/types";
 
 // IMPORT ICONS
 import { IoIosAdd } from "react-icons/io";
 
 const CreateArea = ({addNote}) => {
     
-    const { note, setNote} = useContext(GlobalContext);
+    const { note, dispatch } = useContext(GlobalContext);
 
     const handleChange = (e) =>{
         const { name, value } = e.target;
-        setNote((preValue) => {
-            return {
-                ...preValue,
-                [name]: value,
-            };
-        });
+        dispatch({
+          type:types.ON_CHANGE_NOTE,
+          payload: {
+            ...note,
+            [name]: value,
+          },
+        })
     }
 
     const submitButton = (event) => {
@@ -25,9 +27,12 @@ const CreateArea = ({addNote}) => {
           color: randomColorTailwind(),
         });
         event.preventDefault();
-        setNote({
+        dispatch({
+          type:types.ON_CHANGE_NOTE,
+          payload: {
             title: "",
             content: "",
+          },
         })
     }
   return (

@@ -4,6 +4,11 @@ const initialNotesState = {
   notes: [],
   current_note: null,
   status_modal: false,
+  note: {
+    title: "",
+    content: "",
+  },
+  note_edit: {}
 }
 
 const UserReducer = (state, action) => {
@@ -31,6 +36,16 @@ const UserReducer = (state, action) => {
         ...state,
         current_note: action.payload.id,
         status_modal: action.payload.showEventModal,
+      }; 
+    case types.ON_CHANGE_NOTE:
+      return {
+        ...state,
+        note: action.payload,
+      }; 
+    case types.ON_CHANGE_EDIT:
+      return {
+        ...state,
+        note_edit: action.payload,
       }; 
     // MODAL
     case types.STATUS_MODAL:

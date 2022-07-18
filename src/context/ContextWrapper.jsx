@@ -1,23 +1,19 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import GlobalContext from "./GlobalContext";
 import { UserReducer,initialNotesState } from "./Reducer";
+import { types } from "./types";
 
 export default function ContextWrapper(props) {
 
     // USE REDUCER
     const [state, dispatch] = useReducer(UserReducer, initialNotesState)
 
-    const [note, setNote] = useState({
-        title: "",
-        content: "",
-        color: "",
-    });
-    
-    const [noteEdit, setNoteEdit] = useState({});
-
     useEffect(() => {
       if(state.current_note !== null){
-        setNoteEdit(state.notes[state.current_note]);
+        dispatch({
+          type:types.ON_CHANGE_EDIT,
+          payload: state.notes[state.current_note],
+        })
       }
     }, [state.current_note, state.notes]);
 
@@ -27,10 +23,8 @@ export default function ContextWrapper(props) {
             notes: state.notes,
             selectNote: state.current_note,
             showEventModal: state.status_modal,
-            note,
-            setNote,
-            noteEdit,
-            setNoteEdit,
+            note: state.note,
+            noteEdit: state.note_edit,
             dispatch,
         }}
       >

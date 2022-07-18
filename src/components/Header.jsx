@@ -45,7 +45,7 @@ const Header = () => {
                     <button className='p-3 hover:bg-gray-100 rounded-full transition duration-200 ease-linear mr-2'>
                         <TbGridDots className='text-2xl'/>
                     </button>
-                    <button className='rounded-full mr-8 bg-green-900 p-2 px-3'>
+                    <button className='rounded-full mr-8 bg-green-900 py-2 px-3'>
                         <p className='text-xl text-white font-bold'>D</p>
                     </button>
                 </div>
