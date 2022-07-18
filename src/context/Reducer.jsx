@@ -8,7 +8,8 @@ const initialNotesState = {
     title: "",
     content: "",
   },
-  note_edit: {}
+  note_edit: {},
+  search: "",
 }
 
 const UserReducer = (state, action) => {
@@ -17,7 +18,8 @@ const UserReducer = (state, action) => {
     case types.ADD_NOTE:
       return {
         ...state,
-        notes: [...state.notes,action.payload]
+        notes: [...state.notes,action.payload.notes],
+        note: action.payload.note,
       };
     case types.DELETE_NOTE:
       return {
@@ -53,6 +55,11 @@ const UserReducer = (state, action) => {
         ...state,
         status_modal: action.payload
       };
+    case types.ON_CHANGE_SEARCH:
+      return {
+        ...state,
+        search: action.payload,
+      }; 
     default:
       return state;
   }

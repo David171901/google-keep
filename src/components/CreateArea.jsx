@@ -27,13 +27,6 @@ const CreateArea = ({addNote}) => {
           color: randomColorTailwind(),
         });
         event.preventDefault();
-        dispatch({
-          type:types.ON_CHANGE_NOTE,
-          payload: {
-            title: "",
-            content: "",
-          },
-        })
     }
   return (
     <div className='flex flex-col items-center mt-10'>

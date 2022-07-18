@@ -7,6 +7,7 @@ const types = {
     STATUS_MODAL : 'STATUS_MODAL',
     ON_CHANGE_NOTE : 'ON_CHANGE_NOTE',
     ON_CHANGE_EDIT : 'ON_CHANGE_EDIT',
+    ON_CHANGE_SEARCH : 'ON_CHANGE_SEARCH',
 }
 
 export {types}
