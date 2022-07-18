@@ -12,29 +12,23 @@ export default function ContextWrapper(props) {
         content: "",
         color: "",
     });
-
-    const [selectNote, setSelectNote] = useState(null);
-
-    const [showEventModal, setShowEventModal] = useState(false);
     
     const [noteEdit, setNoteEdit] = useState({});
 
     useEffect(() => {
-      if(selectNote !== null){
-        setNoteEdit(state.notes[selectNote]);
+      if(state.current_note !== null){
+        setNoteEdit(state.notes[state.current_note]);
       }
-    }, [selectNote, state.notes]);
+    }, [state.current_note, state.notes]);
 
     return (
       <GlobalContext.Provider
         value={{
             notes: state.notes,
+            selectNote: state.current_note,
+            showEventModal: state.status_modal,
             note,
             setNote,
-            selectNote,
-            setSelectNote,
-            showEventModal,
-            setShowEventModal,
             noteEdit,
             setNoteEdit,
             dispatch,

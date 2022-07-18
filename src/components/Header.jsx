@@ -23,7 +23,7 @@ const Header = () => {
                 </div>
                 {/* NAVBAR CENTER */}
                 <div className="max-w-lg w-full lg:max-w-xl">
-                    <label className="sr-only">Search </label>
+                    <label className="sr-only">Search</label>
                     <form className="relative">
                         <button type="submit" className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <AiOutlineSearch className='text-xl'></AiOutlineSearch>

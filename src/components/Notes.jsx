@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Modal from './Modal'
 import GlobalContext from "../context/GlobalContext";
+import { types } from "../context/types";
 
 // REACT ICONS
 import {BsPin} from 'react-icons/bs'
@@ -8,9 +9,19 @@ import {FiUserPlus} from 'react-icons/fi'
 import {BiColorFill, BiImage, BiDotsVerticalRounded} from 'react-icons/bi'
 import {BsTrash} from 'react-icons/bs'
 
-const Notes = ({title,content,deleteNotes,id,color}) => {
+const Notes = ({title,content,deleteNote,id,color}) => {
 
-  const { setSelectNote, showEventModal, setShowEventModal } = useContext(GlobalContext);
+  const { showEventModal, dispatch } = useContext(GlobalContext);
+
+  const selectNote = (_id) => {
+    dispatch({
+      type:types.SELECT_NOTE,
+      payload: {
+        id: _id,
+        showEventModal: true,
+      },
+    })
+  }
 
   return (
     <>
@@ -19,10 +30,7 @@ const Notes = ({title,content,deleteNotes,id,color}) => {
         <div className='h-12 w-full flex justify-end '>
           <button 
             className='hover:bg-gray-100 hover:bg-opacity-80 rounded-full transition duration-200 ease-linear mr-2 mt-2 cursor-pointer '
-            onClick={()=> {
-              setSelectNote(id);
-              setShowEventModal(true);
-            }}
+            onClick={()=> selectNote(id)}
           >
             <BsPin className='text-xl w-10'></BsPin>
           </button>
@@ -35,7 +43,7 @@ const Notes = ({title,content,deleteNotes,id,color}) => {
         {/* FOOTER NOTE */}
         <div>
           <div className='h-12 px-4 flex justify-between items-center space-x-3'>
-            <BsTrash className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700' onClick={()=>deleteNotes(id)}></BsTrash>
+            <BsTrash className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700' onClick={()=>deleteNote(id)}></BsTrash>
             <FiUserPlus className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></FiUserPlus>
             <BiColorFill className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></BiColorFill>
             <BiImage className='text-2xl text-gray-500 transition duration-200 ease-linear hover:text-gray-700'></BiImage>

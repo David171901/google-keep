@@ -16,7 +16,7 @@ function App() {
     })
   }
 
-  const deleteNotes = (id) => {
+  const deleteNote = (id) => {
     dispatch({
       type:types.DELETE_NOTE,
       payload: id,
@@ -30,7 +30,7 @@ function App() {
       <div className="mt-10 container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-4">
         {
           notes.map((noteItem, index) => {
-            return <Notes key={index} title={noteItem.title} content={noteItem.content} color={noteItem.color} deleteNotes={deleteNotes} id={index} />
+            return <Notes key={index} title={noteItem.title} content={noteItem.content} color={noteItem.color} deleteNote={deleteNote} id={index} />
           })
         }
       </div>

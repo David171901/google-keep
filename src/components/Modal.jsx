@@ -10,7 +10,7 @@ import {BsFileArrowDown} from 'react-icons/bs'
 
 const Modal = () => {
   
-  const { notes, dispatch,selectNote,setShowEventModal, noteEdit, setNoteEdit } = useContext(GlobalContext);
+  const { notes, dispatch,selectNote, noteEdit, setNoteEdit } = useContext(GlobalContext);
 
   const handleChange = (e) =>{
     const { name, value } = e.target;
@@ -22,15 +22,15 @@ const Modal = () => {
     });
   }
 
-  const onSubmitUpdate = (e) => {
+  const editNote = (e) => {
     dispatch({
       type:types.EDIT_NOTE,
       payload: {
         noteEdit,
         selectNote,
+        showEventModal: false,
       },
     })
-    setShowEventModal(false);
     e.preventDefault();
   }
 
@@ -38,10 +38,10 @@ const Modal = () => {
     <>
       <div className='flex justify-center items-center w-screen h-screen fixed top-0 left-0 bg-gray-300 bg-opacity-20'>
         <div className={`relative max-w-lg w-full h-auto rounded-lg opacity-100 ${notes[selectNote].color} scrollbar scrollbar-thumb-gray-300 scrollbar-track-gray-100`}>
-          <form onSubmit={onSubmitUpdate}>
+          <form onSubmit={editNote}>
             <input
                 className={`px-8 py-4 w-full focus:outline-none text-lg font-semibold border-b ${notes[selectNote].color}`}
-                value={noteEdit.title}
+                value={noteEdit?.title}
                 type="text"
                 placeholder="Title"
                 name="title"
@@ -50,7 +50,7 @@ const Modal = () => {
             />
             <textarea
                 className={`px-8 py-4 w-full h-[31rem] focus:outline-none scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin text-justify ${notes[selectNote].color}`}
-                value={noteEdit.content}
+                value={noteEdit?.content}
                 name="content"
                 placeholder="Take a note..."
                 onChange={handleChange}
@@ -68,7 +68,10 @@ const Modal = () => {
           </form>
 
           <div className='absolute top-2 right-2 text-xl' onClick={()=>{
-            setShowEventModal(false);
+            dispatch({
+              type:types.STATUS_MODAL,
+              payload: false,
+            })
           }}>
             <AiOutlineClose></AiOutlineClose>
           </div>
